@@ -4,31 +4,18 @@ using UnityEngine;
 
 public class DefenderButton : MonoBehaviour {
 
-    [SerializeField]
-    GameObject defenderPrefab;
-
-    [SerializeField]
-    DefenderSpawner defenderSpawner;
-
-    private SpriteRenderer spriteRenderer;
-    private Color defaultColor = Color.white;
-
-	void Start () {
-        this.spriteRenderer = GetComponent<SpriteRenderer>();
-        this.defaultColor = this.spriteRenderer.color;
-    }
-
+    [SerializeField] Defender defenderPrefab;
 
     private void OnMouseDown()
     {
         var buttons = FindObjectsOfType<DefenderButton>();
-        foreach(var b in buttons)
+        foreach(DefenderButton button in buttons)
         {
-            b.GetComponent<SpriteRenderer>().color = this.defaultColor;
+            button.GetComponent<SpriteRenderer>().color = new Color32(41, 41, 41, 255);
         }
 
-        this.spriteRenderer.color = Color.white;
-
-        defenderSpawner.DefenderPrefab = defenderPrefab;
+        GetComponent<SpriteRenderer>().color = Color.white;
+        FindObjectOfType<DefenderSpawner>().SetSelectedDefender(defenderPrefab);
     }
+
 }

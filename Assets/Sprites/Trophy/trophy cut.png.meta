@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 25af7745133976545aa7314119c5a7b9
+guid: fa375753da5a6484a8d1e73ceb607789
 TextureImporter:
   fileIDToRecycleName:
     21300000: trophy cut_0
@@ -83,7 +83,7 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
-    buildTarget: Windows Store Apps
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -112,9 +112,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 21
+        y: 26
         width: 37
-        height: 41
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,7 +122,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62bb67ef173eb024685c47be1f98f48e
+      spriteID: 3804832b867721d4f99e01d0330e35de
       vertices: []
       indices: 
       edges: []
@@ -142,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66358dc07405b504396f71ba337f47f4
+      spriteID: b9f371d347da310449f36f2b82f81a58
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: aad31f3face935847aee748d1b7707ab
+    spriteID: 593381d400c89504ea2a140ccbf219e9
     vertices: []
     indices: 
     edges: []

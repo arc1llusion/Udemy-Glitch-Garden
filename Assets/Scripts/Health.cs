@@ -4,44 +4,24 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
 
-    [SerializeField]
-    int startingHealth = 10;
+    [SerializeField] float health = 100f;
+    [SerializeField] GameObject deathVFX;
 
-    int currentHealth = 10;
-
-
-    [SerializeField]
-    GameObject deathFx;
-
-    // Use this for initialization
-    void Start () {
-        currentHealth = startingHealth;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void DealDamage(int damage)
+    public void DealDamage(float damage)
     {
-        currentHealth -= damage;
-
-        if(currentHealth <= 0)
+        health -= damage;
+        if (health <= 0)
         {
-            TriggerDeathFx();
+            TriggerDeathVFX();
             Destroy(gameObject);
         }
     }
-
-    private void TriggerDeathFx()
+    
+    private void TriggerDeathVFX()
     {
-        if (deathFx != null)
-        {
-            var fx = Instantiate(deathFx, transform.position, transform.rotation);
-            var ps = fx.GetComponent<ParticleSystem>();
-            
-            Destroy(fx, ps.main.duration + 1);
-        }
+        if(!deathVFX) { return; }
+        GameObject deathVFXObject = Instantiate(deathVFX, transform.position, transform.rotation);
+        Destroy(deathVFXObject, 1f);
     }
+
 }

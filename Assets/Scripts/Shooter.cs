@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour {
 
-    [SerializeField]
-    GameObject projectile = null;
-
-    [SerializeField]
-    Transform gun = null;
+    [SerializeField] GameObject projectile, gun;
 
     public void Fire()
     {
-        Instantiate(projectile, gun.position, gun.rotation);
+        Instantiate(projectile, gun.transform.position, transform.rotation);
     }
+
 }

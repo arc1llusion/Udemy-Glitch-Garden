@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefenderSpawner : MonoBehaviour
-{
-    [SerializeField]
-    public StarDisplay starDisplay;
+public class DefenderSpawner : MonoBehaviour {
 
-    public GameObject DefenderPrefab { get; set; }
+    Defender defender;
 
     private void OnMouseDown()
     {
-        Debug.Log("Mouse Clicked");
-        SpawnDefender(GetSquareClicked());
+        AttemptToPlaceDefenderAt(GetSquareClicked());
+    }
+
+    public void SetSelectedDefender(Defender defenderToSelect)
+    {
+        defender = defenderToSelect;
+    }
+
+    private void AttemptToPlaceDefenderAt(Vector2 gridPos)
+    {
+        var StarDisplay = FindObjectOfType<StarDisplay>();
+        int defenderCost = defender.GetStarCost();
+        if (StarDisplay.HaveEnoughStars(defenderCost))
+        {
+            SpawnDefender(gridPos);
+            StarDisplay.SpendStars(defenderCost);
+        }
     }
 
     private Vector2 GetSquareClicked()
@@ -25,16 +37,15 @@ public class DefenderSpawner : MonoBehaviour
 
     private Vector2 SnapToGrid(Vector2 rawWorldPos)
     {
-        float x = Mathf.RoundToInt(rawWorldPos.x);
-        float y = Mathf.RoundToInt(rawWorldPos.y);
-        return new Vector2(x, y);
+        float newX = Mathf.RoundToInt(rawWorldPos.x);
+        float newY = Mathf.RoundToInt(rawWorldPos.y);
+        return new Vector2(newX, newY);
     }
 
-    private void SpawnDefender(Vector2 worldPos)
+    private void SpawnDefender(Vector2 roundedPos)
     {
-        if (DefenderPrefab != null)
-        {
-            GameObject defender = Instantiate(DefenderPrefab, worldPos, Quaternion.identity);
-        }
+        Defender newDefender = Instantiate(defender, roundedPos, Quaternion.identity) as Defender;
+        Debug.Log(roundedPos);
     }
+
 }

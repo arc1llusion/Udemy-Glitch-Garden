@@ -4,29 +4,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-    [SerializeField]
-    float moveSpeed = 1.0f;
+    [SerializeField] float speed = 1f;
+    [SerializeField] float damage = 50;
 
-    [SerializeField]
-    float rotateSpeed = 1.0f;
-
-    [SerializeField]
-    int damage = 1;
-
-
-    void Update () {
-        Move();
-        //Rotate();
-    }
-
-    private void Rotate()
+	void Update ()
     {
-        transform.Rotate(-Vector3.forward, rotateSpeed * Time.deltaTime);
-    }
-
-    private void Move()
-    {
-        transform.Translate(Vector2.right * Time.deltaTime * moveSpeed);
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D otherCollider)
@@ -34,10 +17,11 @@ public class Projectile : MonoBehaviour {
         var health = otherCollider.GetComponent<Health>();
         var attacker = otherCollider.GetComponent<Attacker>();
 
-        if(attacker != null && health != null)
+        if(attacker && health)
         {
             health.DealDamage(damage);
             Destroy(gameObject);
         }
+
     }
 }

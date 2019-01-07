@@ -9,16 +9,33 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1604416224043276}
+  m_RootGameObject: {fileID: 1791519410597088}
   m_IsPrefabAsset: 1
---- !u!1 &1054301872982500
+--- !u!1 &1514728555288420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4541465621644300}
+  - component: {fileID: 212140794878316252}
+  - component: {fileID: 95163112812758286}
+  m_Layer: 0
+  m_Name: Body
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1604416120775340
 GameObject:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4022684911197844}
+  - component: {fileID: 4237137941400046}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -26,32 +43,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1248043725661018
+--- !u!1 &1791519410597088
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4353248229403580}
-  - component: {fileID: 212650908015724878}
-  - component: {fileID: 95470032511928142}
-  - component: {fileID: 114011357730128240}
-  m_Layer: 0
-  m_Name: Cactus Body
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1604416224043276
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4512605271391874}
+  - component: {fileID: 4871996068792944}
+  - component: {fileID: 114840601588962314}
+  - component: {fileID: 114017145368134852}
   m_Layer: 0
   m_Name: Cactus
   m_TagString: Untagged
@@ -59,57 +60,57 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4022684911197844
+--- !u!4 &4237137941400046
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1054301872982500}
+  m_GameObject: {fileID: 1604416120775340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: -0.13, z: 0}
+  m_LocalPosition: {x: 0.56, y: -0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4353248229403580}
+  m_Father: {fileID: 4541465621644300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4353248229403580
+--- !u!4 &4541465621644300
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1248043725661018}
+  m_GameObject: {fileID: 1514728555288420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4022684911197844}
-  m_Father: {fileID: 4512605271391874}
+  - {fileID: 4237137941400046}
+  m_Father: {fileID: 4871996068792944}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4512605271391874
+--- !u!4 &4871996068792944
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1604416224043276}
+  m_GameObject: {fileID: 1791519410597088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4353248229403580}
+  - {fileID: 4541465621644300}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95470032511928142
+--- !u!95 &95163112812758286
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1248043725661018}
+  m_GameObject: {fileID: 1514728555288420}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b9e6d76681dcd4b4ba27a7d9a0fc3e7a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 26cd90feca74ab040af786312900719e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -118,25 +119,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114011357730128240
+--- !u!114 &114017145368134852
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1248043725661018}
+  m_GameObject: {fileID: 1791519410597088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6900da875286dff4e979734327573614, type: 3}
+  m_Script: {fileID: 11500000, guid: 2388a7c4e7484d14ba9121550e1425c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1630718822500996, guid: 8c6ccfaf271a12f4fbc573ec483268ed, type: 2}
-  gun: {fileID: 4022684911197844}
---- !u!212 &212650908015724878
+  projectile: {fileID: 1213639053197992, guid: 67b4225d3611fae49a89947f9fea80c5, type: 2}
+  gun: {fileID: 1604416120775340}
+--- !u!114 &114840601588962314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791519410597088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc5114b094ac114fbb26f62b990607c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starCost: 100
+--- !u!212 &212140794878316252
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1248043725661018}
+  m_GameObject: {fileID: 1514728555288420}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -166,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300002, guid: 059343701b05bf84c98b9f637ce03c7f, type: 3}
+  m_Sprite: {fileID: 21300002, guid: f13ec5953ec4f6f4aacdb498107ce8de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

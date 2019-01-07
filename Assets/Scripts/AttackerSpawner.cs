@@ -2,35 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackerSpawner : MonoBehaviour
-{
-    [SerializeField]
-    Attacker attackerPrefab = null;
+public class AttackerSpawner : MonoBehaviour {
 
-    [SerializeField]
-    float minSpawnDelay = 1.0f;
-
-    [SerializeField]
-    float maxSpawnDelay = 5.0f;
+    [SerializeField] float minSpawnDelay = 1f;
+    [SerializeField] float maxSpawnDelay = 5f;
+    [SerializeField] Attacker attackerPrefab;
 
     bool spawn = true;
 
     IEnumerator Start()
     {
-        while (spawn)
+        while(spawn)
         {
-            yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay + 1));
+            yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
             SpawnAttacker();
         }
     }
-
+	
     private void SpawnAttacker()
     {
-        Instantiate(attackerPrefab.gameObject, transform.position, Quaternion.identity, transform);
+        Instantiate(attackerPrefab, transform.position, transform.rotation);
     }
 
-    void Update()
-    {
-
-    }
+	// Update is called once per frame
+	void Update () {
+		
+	}
 }
