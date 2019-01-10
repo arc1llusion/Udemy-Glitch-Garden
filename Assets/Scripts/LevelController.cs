@@ -1,44 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class LevelController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    IEnumerable<AttackerSpawner> attackerSpawners;
-    GameTimer gameTimer;
+public class LevelController : MonoBehaviour {
 
+    [SerializeField] float waitToLoad = 4f;
     [SerializeField] GameObject winLabel;
+    [SerializeField] GameObject loseLabel;
+    int numberOfAttackers = 0;
+    bool levelTimerFinished = false;
 
-    [SerializeField] float WinTimeToWait = 4;
-
-    bool winTriggered = false;
-    void Start()
+    private void Start()
     {
         winLabel.SetActive(false);
-
-        attackerSpawners = FindObjectsOfType<AttackerSpawner>();
-        gameTimer = FindObjectOfType<GameTimer>();
+        loseLabel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AttackerSpawned()
     {
-        bool areEnemiesDead = attackerSpawners.All(a => a.transform.childCount == 0);
-        bool isTimerDone = gameTimer.IsLevelFinished;
+        numberOfAttackers++;
+    }
 
-        if (isTimerDone)
+    public void AttackerKilled()
+    {
+        numberOfAttackers--;
+        if (numberOfAttackers <= 0 && levelTimerFinished)
         {
-            foreach(var spawner in attackerSpawners)
-            {
-                spawner.StopSpawning();
-            }
-        }
-
-        if(!winTriggered && areEnemiesDead && gameTimer.IsLevelFinished)
-        {
-            winTriggered = true;
             StartCoroutine(HandleWinCondition());
         }
     }
@@ -47,8 +34,29 @@ public class LevelController : MonoBehaviour
     {
         winLabel.SetActive(true);
         GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(WinTimeToWait);
-
-        GetComponent<LevelLoader>().LoadNextScene();
+        yield return new WaitForSeconds(waitToLoad);
+        FindObjectOfType<LevelLoader>().LoadNextScene();
     }
+
+    public void HandleLoseCondition()
+    {
+        loseLabel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void LevelTimerFinished()
+    {
+        levelTimerFinished = true;
+        StopSpawners();
+    }
+
+    private void StopSpawners()
+    {
+        AttackerSpawner[] spawnerArray = FindObjectsOfType<AttackerSpawner>();
+        foreach (AttackerSpawner spawner in spawnerArray)
+        {
+            spawner.StopSpawning();
+        }
+    }
+
 }

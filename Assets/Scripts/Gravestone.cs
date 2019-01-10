@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gravestone : MonoBehaviour
-{
+public class Gravestone : MonoBehaviour {
+
     private void OnTriggerStay2D(Collider2D otherCollider)
     {
-        var attacker = otherCollider.GetComponent<Attacker>();
+        Attacker attacker = otherCollider.GetComponent<Attacker>();
 
         if(attacker)
         {
-
+            // TODO Add some sort of animation
         }
+
     }
+
 }

@@ -5,32 +5,36 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour {
 
-    [SerializeField] int TimeToWait = 4;
-
-    private int currentSceneIndex = 0;
+    [SerializeField] int timeToWait = 4;
+    int currentSceneIndex;
 
 	// Use this for initialization
 	void Start () {
-
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-        if (currentSceneIndex == Constants.SCENE_SPLASH_SCREEN)
+        if (currentSceneIndex == 0)
         {
-            StartCoroutine(LoadStartScene());
+            StartCoroutine(WaitForTime());
         }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    public IEnumerator LoadStartScene()
+    IEnumerator WaitForTime()
     {
-        yield return new WaitForSeconds(TimeToWait);
-
-        SceneManager.LoadScene(Constants.SCENE_START_SCREEN);
+        yield return new WaitForSeconds(timeToWait);
+        LoadNextScene();
     }
+
+    public void RestartScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void LoadMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Start Screen");
+    }
+
     public void LoadNextScene()
     {
         SceneManager.LoadScene(currentSceneIndex + 1);
@@ -40,9 +44,10 @@ public class LevelLoader : MonoBehaviour {
     {
         SceneManager.LoadScene("Lose Screen");
     }
-
-    public void LoadYouWin()
+	
+    public void QuitGame()
     {
-        SceneManager.LoadScene("Win Screen");
+        Application.Quit();
     }
+
 }

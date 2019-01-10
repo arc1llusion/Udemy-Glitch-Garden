@@ -1,42 +1,41 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooter : MonoBehaviour {
 
     [SerializeField] GameObject projectile, gun;
-
     AttackerSpawner myLaneSpawner;
     Animator animator;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
         SetLaneSpawner();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         if(IsAttackerInLane())
         {
-            animator.SetBool("IsAttacking", true);   
+            animator.SetBool("isAttacking", true);
         }
         else
         {
-            animator.SetBool("IsAttacking", false);
+            animator.SetBool("isAttacking", false);
         }
     }
 
     private void SetLaneSpawner()
     {
-        var spawners = FindObjectsOfType<AttackerSpawner>();
+        AttackerSpawner[] spawners = FindObjectsOfType<AttackerSpawner>();
 
-        foreach(var spawner in spawners)
+        foreach (AttackerSpawner spawner in spawners)
         {
-            bool isCloseEnough = Mathf.Abs(spawner.transform.position.y - transform.position.y) <= Mathf.Epsilon;
-
-            if(isCloseEnough)
+            bool IsCloseEnough = 
+                (Mathf.Abs(spawner.transform.position.y - transform.position.y) 
+                <= Mathf.Epsilon);
+            if (IsCloseEnough)
             {
                 myLaneSpawner = spawner;
             }
@@ -45,11 +44,14 @@ public class Shooter : MonoBehaviour {
 
     private bool IsAttackerInLane()
     {
-        if(myLaneSpawner.transform.childCount <= 0)
+        if (myLaneSpawner.transform.childCount <= 0)
         {
             return false;
         }
-        return true;
+        else
+        {
+            return true;
+        }
     }
 
     public void Fire()

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageCollider : MonoBehaviour
-{
-    private void OnTriggerEnter2D(Collider2D _)
+public class DamageCollider : MonoBehaviour {
+
+    private void OnTriggerEnter2D()
     {
-        var ld = FindObjectOfType<LivesDisplay>();
-        ld.TakeLife();
+        FindObjectOfType<LivesDisplay>().TakeLife();
     }
 }

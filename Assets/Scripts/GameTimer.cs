@@ -3,35 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameTimer : MonoBehaviour
-{
-    [Tooltip("Level Time in Seconds")]
-    [SerializeField] float levelTime = 10f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class GameTimer : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
+    [Tooltip("Our level timer in SECONDS")]
+    [SerializeField] float levelTime = 10;
+    bool triggeredLevelFinished = false;
+	
+	// Update is called once per frame
+	void Update ()
     {
-        if(IsLevelFinished) { return; }
+        if (triggeredLevelFinished) { return; }
         GetComponent<Slider>().value = Time.timeSinceLevelLoad / levelTime;
 
         bool timerFinished = (Time.timeSinceLevelLoad >= levelTime);
-
-        if(timerFinished)
+        if (timerFinished)
         {
-            Debug.Log("level timer expired");
+            FindObjectOfType<LevelController>().LevelTimerFinished();
+            triggeredLevelFinished = true;
         }
-    }
-
-    public bool IsLevelFinished
-    {
-        get
-        {
-            return Time.timeSinceLevelLoad >= levelTime;
-        }
-    }
+	}
 }
